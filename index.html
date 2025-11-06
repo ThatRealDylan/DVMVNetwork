@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Validation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 30px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-block;
+        transition: opacity 0.3s;
+    }
+
+    .logo:hover {
+        opacity: 0.8;
+    }
+
+    .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 450px;
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    .error-message {
+        color: #e74c3c;
+        margin-top: 15px;
+        font-weight: 500;
+        display: none;
+    }
+
+    .error-message.show {
+        display: block;
+    }
+
+    .success-container {
+        display: none;
+    }
+
+    .success-container.show {
+        display: block;
+    }
+
+    .success-title {
+        color: #27ae60;
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .success-message {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .checkmark {
+        color: #27ae60;
+        font-size: 64px;
+        margin-bottom: 20px;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="header">
+        <div class="logo" onclick="showMessage()">DVMV Network</div>
+    </div>
+
+```
+<div class="container">
+    <div id="inputForm">
+        <h1>Enter your code</h1>
+        <div class="input-group">
+            <input type="text" id="codeInput" placeholder="Enter code here">
+        </div>
+        <button onclick="validateCode()">Confirm</button>
+        <div id="errorMessage" class="error-message">
+            The Code Is Invalid! Try Again
+        </div>
+    </div>
+
+    <div id="successContainer" class="success-container">
+        <div class="checkmark">✓</div>
+        <h1 class="success-title">Success!</h1>
+        <p class="success-message">
+            Your Software will be delivered in an email as soon as we can email it. This can take up to 3 months.
+        </p>
+    </div>
+</div>
+
+<script>
+    function showMessage() {
+        alert('This Page May not be visited right now.');
+    }
+
+    function validateCode() {
+        const input = document.getElementById('codeInput');
+        const code = input.value.trim();
+        const errorMessage = document.getElementById('errorMessage');
+        const inputForm = document.getElementById('inputForm');
+        const successContainer = document.getElementById('successContainer');
+
+        const validCodes = ['G72BT1I', 'DVMV/codeDebugTest=Success'];
+
+        if (code === '' || !validCodes.includes(code)) {
+            errorMessage.classList.add('show');
+        } else {
+            inputForm.style.display = 'none';
+            successContainer.classList.add('show');
+        }
+    }
+
+    document.getElementById('codeInput').addEventListener('input', function() {
+        document.getElementById('errorMessage').classList.remove('show');
+    });
+
+    document.getElementById('codeInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            validateCode();
+        }
+    });
+</script>
+```
+
+</body>
+</html>
