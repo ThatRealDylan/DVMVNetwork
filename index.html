@@ -1,4 +1,15 @@
-box;
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Validation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
 ```
@@ -6,10 +17,9 @@ box;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
+        margin: 0;
+        padding: 0;
+        position: relative;
     }
 
     .header {
@@ -21,6 +31,7 @@ box;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 1000;
     }
 
     .logo {
@@ -36,6 +47,14 @@ box;
         opacity: 0.8;
     }
 
+    .main-content {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 100px 20px 20px 20px;
+    }
+
     .container {
         background: white;
         padding: 40px;
@@ -44,6 +63,39 @@ box;
         max-width: 450px;
         width: 100%;
         text-align: center;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        .main-content {
+            padding: 80px 15px 15px 15px;
+        }
+
+        .container {
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+        }
     }
 
     h1 {
@@ -140,7 +192,8 @@ box;
     </div>
 
 ```
-<div class="container">
+<div class="main-content">
+    <div class="container">
     <div id="inputForm">
         <h1>Enter your code</h1>
         <div class="input-group">
@@ -159,6 +212,7 @@ box;
             Your Software will be delivered in an email as soon as we can email it. This can take up to 3 months.
         </p>
     </div>
+</div>
 </div>
 
 <script>
@@ -197,3 +251,4 @@ box;
 
 </body>
 </html>
+            
